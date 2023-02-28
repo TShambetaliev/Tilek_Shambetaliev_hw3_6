@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Tilek_Shambetaliev_hw3_6</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="song">Song</string>
+    <string name="now_playing">Now Playing</string>
+    <string name="sagynam">Sagynam</string>
+    <string name="mirbek_atabekov">Mirbek Atabekov</string>
+</resources>
