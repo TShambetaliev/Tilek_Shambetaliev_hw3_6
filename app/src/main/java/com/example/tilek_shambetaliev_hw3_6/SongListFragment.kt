@@ -1,5 +1,6 @@
 package com.example.tilek_shambetaliev_hw3_6
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -7,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isGone
 import com.example.tilek_shambetaliev_hw3_6.databinding.FragmentSongListBinding
+import java.text.FieldPosition
 
 class SongListFragment : Fragment() {
 
@@ -35,18 +37,17 @@ class SongListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val adapter = SongAdapter(songSList,this::onClick)
-        binding.rvSong.adapter = adapter
+        val adapter = SongAdapter(songSList,this::onItemClick)
+        binding.rvSong.adapter=adapter
 
     }
 
-    private fun onClick(tvSongs:String){
-        requireActivity().supportFragmentManager.findFragmentById(R.id.fragment1_container)?.view?.isGone=true
-        val bundle = Bundle()
-        bundle.putString("Key",tvSongs)
-        val songDetailFragment=SongDetailFragment()
-        songDetailFragment.arguments=bundle
-        requireActivity().supportFragmentManager.beginTransaction()
-            .replace(R.id.fragment2_container, songDetailFragment).addToBackStack(null).commit()
+    private fun onItemClick (position: Int){
+        val song = songSList[position]
+        val intent = Intent(activity, SecondActivity::class.java)
+        intent.putExtra("name", song.songName)
+        intent.putExtra("singer", song.singerName)
+        startActivity(intent)
     }
+
 }
